@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-primary mt-4" role="alert">
+            Lista de inscritos para seminario de gastronómica
+        </div>
+        <br>
+        <br>
+        <div class="alert alert-warning" role="alert">
+
+            <h1>Listado de Inscritos</h1>
+
+        </div>
+        <div class="alert alert-warning" role="alert">
+
+            {% if personas %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Numer Telefono</th>
+                        <th>Fecha Inscripción</th>
+                        <th>Institucion</th>
+                        <th>Hora Inscripción</th>
+                        <th>Estado</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pro in personas %}
+                    <tr>
+                        <td scope="row">{{ pro.id}}</td>
+                        <td>{{ pro.nombre}}</td>
+                        <td>{{ pro.telefono}}</td>
+                        <td>{{ pro.fechaInscripcion}}</td>
+                        <td>{{ pro.institucion}}</td>
+                        <td>{{ pro.horaInscripcion}}</td>
+                        <td>{{ pro.estado}}</td>
+                        <td>{{ pro.observacion}}</td>
+                        <td><a href="/actualizar/{{pro.id}}" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i>
+                        </td>
+                        <td><a href="/eliminar/{{pro.id}}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="alert alert-info">No hay personas que mostrar</div>
+            {% endif %}
+
+
+
+        </div>
+    </div>
+    <div class="container">
+        <a href="/" class="btn btn-danger">VOLVER</a>
+        <a href="/agregarpersona" class="btn btn-info float-end">AGREGAR PERSONAS</a>
+
+
+    </div>
+</body>
+</html>
